@@ -1,0 +1,154 @@
+<% include ../partialsbase/_head.ejs %>
+<body ng-controller="HomeCtrl">
+
+<nav>
+    <div class="container">
+        <div class="nav-wrapper">
+            <ul class="left">
+                <li><a href="/"> <img id="logo" src="img/logo.png" width="50px"> </a></li>
+                <li><a href="/"> Demo </a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row">
+        <div class="col m4 offset-m4">
+            <!-- Modal Triggers -->
+            <button data-target="signin" class="btn modal-trigger">Login</button>
+            <button data-target="signup" class="btn modal-trigger">Sign Up</button>
+        </div>
+    </div>
+
+
+    <!-- Modal Structure -->
+    <div id="signin" class="modal">
+        <div class="modal-content center-align">
+            <h4>Login Form</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col m10 offset-m1 s12 center-align">
+                    <form class="form-horizontal" action="/login" method="post">
+                        <fieldset>
+                            <!-- Sign In Form -->
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="username">Username:</label>
+
+                                <div class="controls">
+                                    <input required="" id="username" name="username" type="text"
+                                           class="form-control" placeholder="username" class="input-medium"
+                                           required="">
+                                </div>
+                            </div>
+
+                            <!-- Password input-->
+                            <div class="control-group">
+                                <label class="control-label" for="password">Password:</label>
+
+                                <div class="controls">
+                                    <input required="" id="password" name="password" class="form-control"
+                                           type="password" placeholder="********" class="input-medium">
+                                </div>
+                            </div>
+
+                            <!-- Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="signin"></label>
+
+                                <div class="controls">
+                                    <button id="login" name="longin" class="btn btn-success">Log in
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="signup" class="modal">
+        <div class="modal-content center-align">
+            <h4>Sign Up Form</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col m10 offset-m1 s12 center-align">
+                    <form class="form-horizontal" action="/signup" method="post">
+                        <fieldset>
+                            <div class="control-group">
+                                <label class="control-label" for="username">Email:</label>
+                                <div class="controls">
+                                    <input id="username" name="username" class="form-control" type="text"
+                                           placeholder="JoeSixpack@sixpacksrus.com" class="input-large"
+                                           required="">
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="userid">Alias:</label>
+
+                                <div class="controls">
+                                    <input id="userid" name="userid" class="form-control" type="text"
+                                           placeholder="JoeSixpack" class="input-large" required="">
+                                </div>
+                            </div>
+
+                            <!-- Password input-->
+                            <div class="control-group">
+                                <label class="control-label" for="password">Password:</label>
+
+                                <div class="controls">
+                                    <input id="password" name="password" class="form-control"
+                                           type="password" placeholder="********" class="input-large"
+                                           required="">
+                                    <em>1-8 Characters</em>
+                                </div>
+                            </div>
+
+                            <!-- Text input-->
+                            <div class="control-group">
+                                <label class="control-label" for="reenterpassword">Re-Enter
+                                    Password:</label>
+
+                                <div class="controls">
+                                    <input id="reenterpassword" class="form-control" name="reenterpassword"
+                                           type="password" placeholder="********" class="input-large"
+                                           required="">
+                                </div>
+                            </div>
+
+
+                            <!-- Button -->
+                            <div class="control-group">
+                                <label class="control-label" for="confirmsignup"></label>
+
+                                <div class="controls">
+                                    <button id="confirmsignup" name="confirmsignup" class="btn btn-success">
+                                        Sign Up
+                                    </button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.modal-trigger').leanModal();
+    $('.modal-trigger').leanModal();
+</script>
+
+
+</div>
+</body>
+
+

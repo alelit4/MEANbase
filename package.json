@@ -1,0 +1,31 @@
+{
+  "name": "Dephisit",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "body-parser": "*",
+    "connect-flash": "^0.1.1",
+    "crypto-js": "^3.1.6",
+    "ejs": "^2.5.2",
+    "errorhandler": "*",
+    "express": "*",
+    "express-ejs-layouts": "^2.2.0",
+    "express-session": "*",
+    "formidable": "*",
+    "jade": "*",
+    "method-override": "*",
+    "moment": "~2.4.0",
+    "mongoose": "*",
+    "morgan": "*",
+    "node-gcm": "*",
+    "passport": "^0.3.2",
+    "passport-http": "^0.3.0",
+    "passport-local": "^1.0.0",
+    "request": "*",
+    "underscore": "*"
+  },
+  "description": "CrossRoad web",
+  "repository": "Bitbucket"
+}

@@ -1,0 +1,26 @@
+<html ng-app="dephisitApp">
+<% include partialsbase/_head.ejs %>
+
+<body ng-controller="HomeCtrl">
+
+<% include partialsbase/_navbar.ejs %>
+
+<div class="section white">
+    <div class="row container">
+        <h2 class="header">Parallax</h2>
+        <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in
+            this case, is moved at a different speed than the foreground content while scrolling.</p>
+    </div>
+</div>
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="https://images.unsplash.com/photo-1421789497144-f50500b5fcf0?q=80&fm=jpg&w=1080&fit=max&s=1a170370665da809217acf126011b712"
+             alt="Unsplashed background img 1" style="display: block; transform: translate3d(-50%, 166px, 0px);">
+    </div>
+</div>
+
+<% include partialsbase/_footer.ejs %>
+
+</body>
+</html>

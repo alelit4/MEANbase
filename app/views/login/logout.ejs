@@ -1,0 +1,17 @@
+<% include ../partialsbase/_head.ejs %>
+<body ng-controller="SearchTrackingsCtrl">
+<% include ../partialsbase/_navbar.ejs %>
+<!-- Button trigger modal -->
+<form class="form-horizontal" action="/logout" method="post">
+    <!-- Button -->
+    <div class="control-group">
+        <label class="control-label" for="confirmlogut"></label>
+
+        <div class="controls">
+            <button id="confirmlogut" name="confirmlogut" class="btn btn-danger">
+                Log out
+            </button>
+        </div>
+    </div>
+</form>
+</body>
