@@ -1,11 +1,10 @@
-
 var User = require('../../app/models/user');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var CryptoJS = require("crypto-js");
 
 passport.use(new LocalStrategy(
-    function(username, password, done) {
+    function (username, password, done) {
         // asynchronous verification, for effect...
         process.nextTick(function () {
 
@@ -13,10 +12,16 @@ passport.use(new LocalStrategy(
             // username, or the password is not correct, set the user to `false` to
             // indicate failure and set a flash message.  Otherwise, return the
             // authenticated `user`.
-            User.findOne({username: username},function(err, user) {
-                if (err) { return done(err); }
-                if (!user) { return done(null, false, { message: 'Unknown user ' + username }); }
-                if (user.password != CryptoJS.SHA3(password).toString(CryptoJS.enc.Hex)) { return done(null, false, { message: 'Invalid password' }); }
+            User.findOne({username: username}, function (err, user) {
+                if (err) {
+                    return done(err);
+                }
+                if (!user) {
+                    return done(null, false, {message: 'Unknown user ' + username});
+                }
+                if (user.password != CryptoJS.SHA3(password).toString(CryptoJS.enc.Hex)) {
+                    return done(null, false, {message: 'Invalid password'});
+                }
                 return done(null, user);
             })
         });
@@ -24,25 +29,44 @@ passport.use(new LocalStrategy(
 ));
 
 //función que se encarga de la autenticación mediante usuario y ontraseña
-exports.authenticate = passport.authenticate('local',
-    { failureRedirect: '/register',
-        failureFlash: 'Login Error',
-        successRedirect: '/homein',
-        successFlash: 'Login ok'})
+exports.authenticate = passport.authenticate('local', {
+    failureRedirect: '/register',
+    failureFlash: 'Login Error',
+    successRedirect: '/homein',
+    successFlash: 'Login ok'
+});
+
+exports.authenticate2 = function (req, res) {
+    passport.authenticate('local', function (err, user, info) {
+        if (err) {
+            return next(err);
+        }
+        // Redirect if it fails
+        if (!user || err) {
+            return res.status(500).json({
+                message: 'Error creating user.'
+            });
+        }
+        return res.render('homein');
+    });
+};
+
 
 //función que se encarga del registro de usuarios mediante usuario y contraseña
-exports.signup = function (req, res){
+exports.signup = function (req, res) {
 
-    User.findOne({username: req.body.username}, function(err, user) {
-        if ((user !== null) && (user !== undefined) && (user !== '')){
-            res.send(user);
+    User.findOne({username: req.body.username}, function (err, user) {
+        if ((user !== null) && (user !== undefined) && (user !== '')) {
+            return res.status(500).json({
+                message: 'Error creating user.'
+            });
         } else {
             /*
              los password se almacenan en la base de datos mediante la función sha3 y conviertiendo luego el hash
              en un string hexadecimal */
             var pass = CryptoJS.SHA3(req.body.password).toString(CryptoJS.enc.Hex);
             console.log(pass);
-            var UserNew = new User({ username: req.body.username, password: pass});
+            var UserNew = new User({username: req.body.username, password: pass});
             UserNew.save();
             //res.send(UserNew._id);
             res.render("login/home");

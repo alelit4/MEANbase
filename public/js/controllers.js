@@ -68,16 +68,6 @@ dephisitApp.controller('SignalsCtrl', function ($scope, $http, $window, $locatio
 });
 
 
-dephisitApp.controller('HomeCtrl', function ($scope, $http, $window, $location) {
-    $scope.isActive = function (route) {
-        var path = $location.absUrl().split("/");
-        console.log(route === path[path.length - 1]);
-        //console.log($location.absUrl());
-        //console.log(route === $location.path().toString);
-        return route === path[path.length - 1];
-    }
-
-});
 
 dephisitApp.controller('DoctorCtrl', function ($scope, $http, $window, $location) {
 

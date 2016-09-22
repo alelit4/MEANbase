@@ -1,5 +1,9 @@
+<html ng-app="demoAppOut">
+
 <% include ../partialsbase/_head.ejs %>
-<body ng-controller="HomeCtrl">
+<script type="text/javascript" src="js/controlleroutside.js"></script>
+
+<body ng-controller="LoginCtrl">
 
 <nav>
     <div class="container">
@@ -78,64 +82,36 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col m10 offset-m1 s12 center-align">
-                    <form class="form-horizontal" action="/signup" method="post">
-                        <fieldset>
-                            <div class="control-group">
-                                <label class="control-label" for="username">Email:</label>
-                                <div class="controls">
-                                    <input id="username" name="username" class="form-control" type="text"
-                                           placeholder="JoeSixpack@sixpacksrus.com" class="input-large"
-                                           required="">
-                                </div>
-                            </div>
+                    <label class="control-label" for="username">Email:</label>
+                    <div class="controls">
+                        <input id="username" name="username" ng-model="user.username" class="form-control"
+                               type="text"
+                               placeholder="JoeSixpack@sixpacksrus.com" class="input-large"
+                               required="">
+                    </div>
 
-                            <!-- Text input-->
-                            <div class="control-group">
-                                <label class="control-label" for="userid">Alias:</label>
+                    <!-- Text input-->
+                    <label class="control-label" for="userid">Alias:</label>
 
-                                <div class="controls">
-                                    <input id="userid" name="userid" class="form-control" type="text"
-                                           placeholder="JoeSixpack" class="input-large" required="">
-                                </div>
-                            </div>
+                    <div class="controls">
+                        <input ng-model="user.alias" id="userid" name="userid" class="form-control"
+                               type="text"
+                               placeholder="JoeSixpack" class="input-large" required="">
+                    </div>
 
-                            <!-- Password input-->
-                            <div class="control-group">
-                                <label class="control-label" for="password">Password:</label>
+                    <!-- Password input-->
+                    <label class="control-label" for="password">Password:</label>
+                    <div class="controls">
+                        <input ng-model="user.password" id="password" name="password" class="form-control"
+                               type="password" placeholder="********" class="input-large"
+                               required="">
+                        <em>1-8 Characters</em>
+                    </div>
 
-                                <div class="controls">
-                                    <input id="password" name="password" class="form-control"
-                                           type="password" placeholder="********" class="input-large"
-                                           required="">
-                                    <em>1-8 Characters</em>
-                                </div>
-                            </div>
-
-                            <!-- Text input-->
-                            <div class="control-group">
-                                <label class="control-label" for="reenterpassword">Re-Enter
-                                    Password:</label>
-
-                                <div class="controls">
-                                    <input id="reenterpassword" class="form-control" name="reenterpassword"
-                                           type="password" placeholder="********" class="input-large"
-                                           required="">
-                                </div>
-                            </div>
-
-
-                            <!-- Button -->
-                            <div class="control-group">
-                                <label class="control-label" for="confirmsignup"></label>
-
-                                <div class="controls">
-                                    <button id="confirmsignup" name="confirmsignup" class="btn btn-success">
-                                        Sign Up
-                                    </button>
-                                </div>
-                            </div>
-                        </fieldset>
-                    </form>
+                    <!-- Button -->
+                    <button ng-click="signup()" class="btn btn-success  modal-action modal-close">
+                        Sign Up
+                    </button>
                 </div>
             </div>
         </div>
